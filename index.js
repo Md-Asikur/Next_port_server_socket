@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "*",
+    origin: "https://asikur.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
