@@ -4,13 +4,13 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 require("dotenv").config()
-const io = new Server(server, {
+const io = new Server(server); /*, {
   pingTimeout: 60000,
   cors: {
     origin: "https://asikur.vercel.app",
     methods: ["GET", "POST"],
   },
-});
+} */
 app.get("*", (req, res) => {
   res.json({asikur:"Good Work Alhamdulillah"})
 })
