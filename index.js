@@ -3,6 +3,7 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+require("dotenv").config()
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
@@ -10,7 +11,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.json({asikur:"Good Work Alhamdulillah"})
 })
 
@@ -46,6 +47,6 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
-server.listen(8000, () => {
-  console.log("listening on *:8000");
+server.listen(process.env.PORT, () => {
+  console.log(`listening on *:${process.env.PORT}`);
 });
